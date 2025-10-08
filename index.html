@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motocross World - SHAKULPRIME</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
+body { background-color: #111; color: #fff; overflow-x: hidden; }
+
+/* Header Hero */
+header {
+    background: #000;
+    padding: 80px 20px 20px 20px;
+    text-align: center;
+    position: relative;
+}
+header h1 {
+    font-size: 3em;
+    color: #ffcc00;
+    animation: slideIn 2s ease forwards;
+}
+header p {
+    font-size: 1.2em;
+    color: #ccc;
+    margin-top: 10px;
+    animation: fadeIn 3s ease forwards;
+}
+
+/* Table of Contents */
+.toc {
+    background: #222;
+    border-radius: 10px;
+    padding: 15px 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+}
+.toc a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+.toc a:hover { color: #fff; }
+
+@keyframes slideIn { 0% { transform: translateY(-50px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+@keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+
+nav { display: none; } /* hide previous nav since we now have TOC */
+
+section { padding: 60px 20px; max-width: 600px; margin: auto; opacity: 0; transform: translateY(50px); transition: all 1s ease; }
+section.visible { opacity: 1; transform: translateY(0); }
+
+h2 { text-align: center; color: #ffcc00; font-size: 2.2em; margin-bottom: 40px; }
+p { font-size: 1.1em; line-height: 1.8; color: #ddd; text-align: center; max-width: 800px; margin: auto; }
+
+/* Riders Cards */
+.rider-card {
+    width: 100%; height: 60px; background: #222; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 1.2em; color: #ffcc00;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; margin-bottom: 15px;
+}
+.rider-card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(255,204,0,0.6); }
+
+/* Past Seasons Cards */
+.season-card {
+    width: 100%; height: 50px; background: #222; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 1.1em; color: #ffcc00;
+    margin-bottom: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.season-card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(255,204,0,0.6); }
+
+.btn { display: inline-block; background: #ffcc00; color: #000; padding: 12px 25px; font-weight: 700; border-radius: 5px; text-decoration: none; transition: all 0.3s ease; margin-top: 20px; }
+.btn:hover { background: #e6b800; }
+
+footer { background: #000; text-align: center; padding: 25px 20px; border-top: 3px solid #ffcc00; }
+footer p { color: #ffcc00; font-weight: 700; }
+
+@media (max-width: 768px) {
+    section { max-width: 90%; }
+    header h1 { font-size: 2.5em; }
+    .rider-card { height: 70px; font-size: 1.4em; }
+    .season-card { height: 60px; font-size: 1.3em; }
+    .toc a { display: block; margin: 5px 0; }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Motocross World</h1>
+    <p>Website by SHAKULPRIME</p>
+</header>
+
+<!-- Table of Contents -->
+<div class="toc">
+    <a href="#about">About</a> |
+    <a href="#gallery">Riders</a> |
+    <a href="#seasons">Past Seasons</a> |
+    <a href="#contact">Contact</a>
+</div>
+
+<section id="about" class="animate">
+    <h2>About Motocross</h2>
+    <p>Motocross is an extreme motorsport full of speed, skill, and adrenaline. Riders from all over the world compete on challenging tracks with jumps, turns, and dirt obstacles. Whether you're a fan or a rider, motocross is all about courage, determination, and passion!</p>
+    <a href="#gallery" class="btn">See Riders Gallery</a>
+</section>
+
+<section id="gallery" class="animate">
+    <h2>Famous Riders</h2>
+    <div class="rider-card">Eli Tomac</div>
+    <div class="rider-card">Ken Roczen</div>
+    <div class="rider-card">Cooper Webb</div>
+    <div class="rider-card">Jason Anderson</div>
+    <div class="rider-card">Chase Sexton</div>
+    <div class="rider-card">Justin Barcia</div>
+    <div class="rider-card">Marvin Musquin</div>
+    <div class="rider-card">Joey Savatgy</div>
+    <div class="rider-card">Adam Cianciarulo</div>
+    <div class="rider-card">Dylan Ferrandis</div>
+</section>
+
+<section id="seasons" class="animate">
+    <h2>Past MX Seasons</h2>
+    <div class="season-card">2024 - Eli Tomac</div>
+    <div class="season-card">2023 - Cooper Webb</div>
+    <div class="season-card">2022 - Ken Roczen</div>
+    <div class="season-card">2021 - Jason Anderson</div>
+    <div class="season-card">2020 - Eli Tomac</div>
+    <div class="season-card">2019 - Cooper Webb</div>
+    <div class="season-card">2018 - Marvin Musquin</div>
+</section>
+
+<section id="contact" class="animate">
+    <h2>Contact</h2>
+    <p>Want to get in touch? Email us at <strong>shakulprime3@gmail.com</strong> or follow us on social media for the latest motocross updates.</p>
+</section>
+
+<footer>
+    <p>&copy; 2025 SHAKULPRIME. All rights reserved.</p>
+</footer>
+
+<script>
+// Scroll reveal animations
+const sections = document.querySelectorAll('.animate');
+const revealSection = () => {
+    const triggerBottom = window.innerHeight * 0.85;
+    sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if(sectionTop < triggerBottom) section.classList.add('visible');
+    });
+}
+window.addEventListener('scroll', revealSection);
+window.addEventListener('load', revealSection);
+</script>
+
+</body>
+</html>
