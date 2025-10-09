@@ -8,94 +8,51 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
 body { background-color: #111; color: #fff; overflow-x: hidden; }
+header { background: #000; padding: 80px 20px 20px 20px; text-align: center; }
+header h1 { font-size: 3em; color: #ffcc00; animation: slideIn 2s ease forwards; text-shadow: 0 0 15px rgba(255,204,0,0.8); }
+header p { font-size: 1.2em; color: #ccc; margin-top: 10px; animation: fadeIn 3s ease forwards; }
 
-/* Hero Section */
-#hero {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-align: center;
-}
-#hero img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  opacity: 0.85;
-}
-.hero-text {
-  position: relative;
-  z-index: 1;
-}
-.hero-text h1 {
-  font-size: 3em;
-  font-weight: bold;
-  color: #ffcc00;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-}
-.hero-text p {
-  font-size: 1.2em;
-  color: #fff;
-  margin-top: 10px;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
-}
-
-/* Table of Contents */
 .toc { background: #222; border-radius: 10px; padding: 15px 20px; max-width: 700px; margin: 20px auto; text-align: center; }
 .toc a { color: #ffcc00; text-decoration: none; font-weight: bold; margin: 0 10px; transition: color 0.3s ease; }
 .toc a:hover { color: #fff; }
 
-/* Sections */
+@keyframes slideIn { 0% { transform: translateY(-50px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+@keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+
 section { padding: 60px 20px; max-width: 900px; margin: auto; opacity: 0; transform: translateY(50px); transition: all 1s ease; }
 section.visible { opacity: 1; transform: translateY(0); }
 
 h2 { text-align: center; color: #ffcc00; font-size: 2.2em; margin-bottom: 40px; }
 p { font-size: 1.1em; line-height: 1.8; color: #ddd; text-align: center; max-width: 900px; margin: auto; }
 
-/* Grid Cards */
 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; }
 .card { background: #222; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1em; color: #ffcc00; transition: transform 0.3s ease, box-shadow 0.3s ease; text-align: center; height: 60px; }
 .card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(255,204,0,0.6); }
 .card a { color: #ffcc00; text-decoration: none; width: 100%; display: block; text-align: center; padding: 15px 0; }
 .card a:hover { text-decoration: underline; }
 
-/* Buttons */
 .btn { display: inline-block; background: #ffcc00; color: #000; padding: 12px 25px; font-weight: 700; border-radius: 5px; text-decoration: none; transition: all 0.3s ease; margin-top: 20px; }
 .btn:hover { background: #e6b800; }
 
-/* Footer */
 footer { background: #000; text-align: center; padding: 25px 20px; border-top: 3px solid #ffcc00; }
 footer p { color: #ffcc00; font-weight: 700; }
 
-/* Responsive */
 @media (max-width: 768px) {
   section { max-width: 90%; }
+  header h1 { font-size: 2.5em; }
   .card { height: 70px; font-size: 1.2em; }
   .toc a { display: block; margin: 5px 0; }
   .grid { grid-template-columns: repeat(1,1fr); }
-  .hero-text h1 { font-size: 2em; }
-  .hero-text p { font-size: 1em; }
 }
 </style>
 </head>
 <body>
 
-<!-- Hero Section -->
-<section id="hero">
-  <img src="motocross-rider-action-motocross-sport.jpg" alt="Motocross Rider">
-  <div class="hero-text">
-    <h1>Ultimate Motorsports</h1>
-    <p>Website by SHAKULPRIME</p>
-  </div>
-</section>
+<header>
+  <h1>Ultimate Motorsports</h1>
+  <p>Website by SHAKULPRIME</p>
+</header>
 
-<!-- Navigation -->
 <div class="toc">
   <a href="#motocross">Motocross</a> |
   <a href="#supercross">Supercross</a> |
@@ -109,21 +66,21 @@ footer p { color: #ffcc00; font-weight: 700; }
 <section id="motocross" class="animate">
 <h2>Motocross Riders</h2>
 <div class="grid">
-<div class="card"><a href="#">Ken Roczen</a></div>
-<div class="card"><a href="#">Eli Tomac</a></div>
-<div class="card"><a href="#">Jeffrey Herlings</a></div>
-<div class="card"><a href="#">Romain Febvre</a></div>
-<div class="card"><a href="#">Tim Gajser</a></div>
-<div class="card"><a href="#">Antonio Cairoli</a></div>
-<div class="card"><a href="#">Cooper Webb</a></div>
-<div class="card"><a href="#">Marvin Musquin</a></div>
-<div class="card"><a href="#">Jorge Prado</a></div>
-<div class="card"><a href="#">Jeremy Seewer</a></div>
-<div class="card"><a href="#">Glenn Coldenhoff</a></div>
-<div class="card"><a href="#">Jett Lawrence</a></div>
-<div class="card"><a href="#">Hunter Lawrence</a></div>
-<div class="card"><a href="#">Arnaud Tonus</a></div>
-<div class="card"><a href="#">Max Anstie</a></div>
+<div class="card"><a href="https://www.instagram.com/kenroczen94/" target="_blank">Ken Roczen</a></div>
+<div class="card"><a href="https://www.instagram.com/elitomac/" target="_blank">Eli Tomac</a></div>
+<div class="card"><a href="https://www.instagram.com/jeffreyherlings/" target="_blank">Jeffrey Herlings</a></div>
+<div class="card"><a href="https://www.instagram.com/romainfebvre/" target="_blank">Romain Febvre</a></div>
+<div class="card"><a href="https://www.instagram.com/tim_gajser/" target="_blank">Tim Gajser</a></div>
+<div class="card"><a href="https://www.instagram.com/antoniocairoli/" target="_blank">Antonio Cairoli</a></div>
+<div class="card"><a href="https://www.instagram.com/cooperwebb/" target="_blank">Cooper Webb</a></div>
+<div class="card"><a href="https://www.instagram.com/musquinmarvin/" target="_blank">Marvin Musquin</a></div>
+<div class="card"><a href="https://www.instagram.com/jorgeprado/" target="_blank">Jorge Prado</a></div>
+<div class="card"><a href="https://www.instagram.com/jeremyseewer/" target="_blank">Jeremy Seewer</a></div>
+<div class="card"><a href="https://www.instagram.com/glenn_coldenhoff/" target="_blank">Glenn Coldenhoff</a></div>
+<div class="card"><a href="https://www.instagram.com/jettlawrence/" target="_blank">Jett Lawrence</a></div>
+<div class="card"><a href="https://www.instagram.com/hunterlawrence/" target="_blank">Hunter Lawrence</a></div>
+<div class="card"><a href="https://www.instagram.com/arnaudtonus/" target="_blank">Arnaud Tonus</a></div>
+<div class="card"><a href="https://www.instagram.com/maxanstie/" target="_blank">Max Anstie</a></div>
 </div>
 <button class="btn" id="toggleMXChamp">View Champions</button>
 <ul id="mxChampList" style="display:none; text-align:center; margin-top:15px;">
@@ -137,21 +94,21 @@ footer p { color: #ffcc00; font-weight: 700; }
 <section id="supercross" class="animate">
 <h2>Supercross Riders</h2>
 <div class="grid">
-<div class="card"><a href="#">Cooper Webb</a></div>
-<div class="card"><a href="#">Eli Tomac</a></div>
-<div class="card"><a href="#">Ken Roczen</a></div>
-<div class="card"><a href="#">Chase Sexton</a></div>
-<div class="card"><a href="#">Justin Barcia</a></div>
-<div class="card"><a href="#">Malcolm Stewart</a></div>
-<div class="card"><a href="#">Jason Anderson</a></div>
-<div class="card"><a href="#">Adam Cianciarulo</a></div>
-<div class="card"><a href="#">Justin Cooper</a></div>
-<div class="card"><a href="#">Jo Shimoda</a></div>
-<div class="card"><a href="#">Christian Craig</a></div>
-<div class="card"><a href="#">Joey Savatgy</a></div>
-<div class="card"><a href="#">Aaron Plessinger</a></div>
-<div class="card"><a href="#">Austin Forkner</a></div>
-<div class="card"><a href="#">Jett Lawrence</a></div>
+<div class="card"><a href="https://www.instagram.com/cooperwebb/" target="_blank">Cooper Webb</a></div>
+<div class="card"><a href="https://www.instagram.com/elitomac/" target="_blank">Eli Tomac</a></div>
+<div class="card"><a href="https://www.instagram.com/kenroczen94/" target="_blank">Ken Roczen</a></div>
+<div class="card"><a href="https://www.instagram.com/chasesexton/" target="_blank">Chase Sexton</a></div>
+<div class="card"><a href="https://www.instagram.com/justinbarcia/" target="_blank">Justin Barcia</a></div>
+<div class="card"><a href="https://www.instagram.com/malcolmstewart/" target="_blank">Malcolm Stewart</a></div>
+<div class="card"><a href="https://www.instagram.com/jasonandersonmx/" target="_blank">Jason Anderson</a></div>
+<div class="card"><a href="https://www.instagram.com/adamcianciarulo/" target="_blank">Adam Cianciarulo</a></div>
+<div class="card"><a href="https://www.instagram.com/justincooper_/" target="_blank">Justin Cooper</a></div>
+<div class="card"><a href="https://www.instagram.com/joshimoda/" target="_blank">Jo Shimoda</a></div>
+<div class="card"><a href="https://www.instagram.com/christian_craig/" target="_blank">Christian Craig</a></div>
+<div class="card"><a href="https://www.instagram.com/joeysavatgy/" target="_blank">Joey Savatgy</a></div>
+<div class="card"><a href="https://www.instagram.com/aaronplessinger/" target="_blank">Aaron Plessinger</a></div>
+<div class="card"><a href="https://www.instagram.com/austinforkner/" target="_blank">Austin Forkner</a></div>
+<div class="card"><a href="https://www.instagram.com/jettlawrence/" target="_blank">Jett Lawrence</a></div>
 </div>
 <button class="btn" id="toggleSXChamp">View Champions</button>
 <ul id="sxChampList" style="display:none; text-align:center; margin-top:15px;">
@@ -193,9 +150,9 @@ footer p { color: #ffcc00; font-weight: 700; }
 <section id="f1" class="animate">
 <h2>F1 Drivers</h2>
 <div class="grid">
-<div class="card"><a href="#">Lewis Hamilton</a></div>
-<div class="card"><a href="#">Max Verstappen</a></div>
-<div class="card"><a href="#">Charles Leclerc</a></div>
+<div class="card"><a href="https://www.instagram.com/lewishamilton/" target="_blank">Lewis Hamilton</a></div>
+<div class="card"><a href="https://www.instagram.com/maxverstappen1/" target="_blank">Max Verstappen</a></div>
+<div class="card"><a href="https://www.instagram.com/charles_leclerc/" target="_blank">Charles Leclerc</a></div>
 <div class="card"><a href="#">Sebastian Vettel</a></div>
 <div class="card"><a href="#">Fernando Alonso</a></div>
 <div class="card"><a href="#">Valtteri Bottas</a></div>
@@ -253,12 +210,10 @@ footer p { color: #ffcc00; font-weight: 700; }
 <p>Phone: <strong>+256 760724695</strong></p>
 </section>
 
-<!-- Footer -->
 <footer>
 <p>&copy; 2025 SHAKULPRIME. All rights reserved.</p>
 </footer>
 
-<!-- Scripts -->
 <script>
 // Scroll animations
 const sections = document.querySelectorAll('.animate');
@@ -276,7 +231,7 @@ window.addEventListener('load', revealSection);
 function setupToggle(btnId, listId){
   const btn = document.getElementById(btnId);
   const list = document.getElementById(listId);
-  btn.addEventListener('click', ()=> {
+  btn.addEventListener('click', ()=>{
     if(list.style.display==='none'){ list.style.display='block'; btn.textContent='Hide Champions'; }
     else{ list.style.display='none'; btn.textContent='View Champions'; }
   });
