@@ -3,79 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Motocross World - SHAKULPRIME</title>
+<title>Ultimate Motorsports - SHAKULPRIME</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Roboto', sans-serif; }
 body { background-color: #111; color: #fff; overflow-x: hidden; }
+header { background: #000; padding: 80px 20px 20px 20px; text-align: center; }
+header h1 { font-size: 3em; color: #ffcc00; animation: slideIn 2s ease forwards; text-shadow: 0 0 15px rgba(255,204,0,0.8); }
+header p { font-size: 1.2em; color: #ccc; margin-top: 10px; animation: fadeIn 3s ease forwards; }
 
-/* Header Hero */
-header {
-    background: #000;
-    padding: 80px 20px 20px 20px;
-    text-align: center;
-    position: relative;
-}
-header h1 {
-    font-size: 3em;
-    color: #ffcc00;
-    animation: slideIn 2s ease forwards;
-}
-header p {
-    font-size: 1.2em;
-    color: #ccc;
-    margin-top: 10px;
-    animation: fadeIn 3s ease forwards;
-}
-
-/* Table of Contents */
-.toc {
-    background: #222;
-    border-radius: 10px;
-    padding: 15px 20px;
-    max-width: 600px;
-    margin: 20px auto;
-    text-align: center;
-}
-.toc a {
-    color: #ffcc00;
-    text-decoration: none;
-    font-weight: bold;
-    margin: 0 10px;
-    transition: color 0.3s ease;
-}
+.toc { background: #222; border-radius: 10px; padding: 15px 20px; max-width: 700px; margin: 20px auto; text-align: center; }
+.toc a { color: #ffcc00; text-decoration: none; font-weight: bold; margin: 0 10px; transition: color 0.3s ease; }
 .toc a:hover { color: #fff; }
 
 @keyframes slideIn { 0% { transform: translateY(-50px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
 @keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
 
-nav { display: none; } /* hide previous nav since we now have TOC */
-
-section { padding: 60px 20px; max-width: 600px; margin: auto; opacity: 0; transform: translateY(50px); transition: all 1s ease; }
+section { padding: 60px 20px; max-width: 900px; margin: auto; opacity: 0; transform: translateY(50px); transition: all 1s ease; }
 section.visible { opacity: 1; transform: translateY(0); }
 
 h2 { text-align: center; color: #ffcc00; font-size: 2.2em; margin-bottom: 40px; }
-p { font-size: 1.1em; line-height: 1.8; color: #ddd; text-align: center; max-width: 800px; margin: auto; }
+p { font-size: 1.1em; line-height: 1.8; color: #ddd; text-align: center; max-width: 900px; margin: auto; }
 
-/* Riders Cards */
-.rider-card {
-    width: 100%; height: 60px; background: #222; border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: bold; font-size: 1.2em; color: #ffcc00;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-align: center; margin-bottom: 15px;
-}
-.rider-card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(255,204,0,0.6); }
-
-/* Past Seasons Cards */
-.season-card {
-    width: 100%; height: 50px; background: #222; border-radius: 10px;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: bold; font-size: 1.1em; color: #ffcc00;
-    margin-bottom: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.season-card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(255,204,0,0.6); }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 20px; }
+.card { background: #222; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1em; color: #ffcc00; transition: transform 0.3s ease, box-shadow 0.3s ease; text-align: center; height: 60px; }
+.card:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(255,204,0,0.6); }
+.card a { color: #ffcc00; text-decoration: none; width: 100%; display: block; text-align: center; padding: 15px 0; }
+.card a:hover { text-decoration: underline; }
 
 .btn { display: inline-block; background: #ffcc00; color: #000; padding: 12px 25px; font-weight: 700; border-radius: 5px; text-decoration: none; transition: all 0.3s ease; margin-top: 20px; }
 .btn:hover { background: #e6b800; }
@@ -84,81 +38,209 @@ footer { background: #000; text-align: center; padding: 25px 20px; border-top: 3
 footer p { color: #ffcc00; font-weight: 700; }
 
 @media (max-width: 768px) {
-    section { max-width: 90%; }
-    header h1 { font-size: 2.5em; }
-    .rider-card { height: 70px; font-size: 1.4em; }
-    .season-card { height: 60px; font-size: 1.3em; }
-    .toc a { display: block; margin: 5px 0; }
+  section { max-width: 90%; }
+  header h1 { font-size: 2.5em; }
+  .card { height: 70px; font-size: 1.2em; }
+  .toc a { display: block; margin: 5px 0; }
+  .grid { grid-template-columns: repeat(1,1fr); }
 }
 </style>
 </head>
 <body>
 
 <header>
-    <h1>Motocross World</h1>
-    <p>Website by SHAKULPRIME</p>
+  <h1>Ultimate Motorsports</h1>
+  <p>Website by SHAKULPRIME</p>
 </header>
 
-<!-- Table of Contents -->
 <div class="toc">
-    <a href="#about">About</a> |
-    <a href="#gallery">Riders</a> |
-    <a href="#seasons">Past Seasons</a> |
-    <a href="#contact">Contact</a>
+  <a href="#motocross">Motocross</a> |
+  <a href="#supercross">Supercross</a> |
+  <a href="#enduro">Enduro</a> |
+  <a href="#f1">F1</a> |
+  <a href="#mxon">MXoN Champions</a> |
+  <a href="#contact">Contact</a>
 </div>
 
-<section id="about" class="animate">
-    <h2>About Motocross</h2>
-    <p>Motocross is an extreme motorsport full of speed, skill, and adrenaline. Riders from all over the world compete on challenging tracks with jumps, turns, and dirt obstacles. Whether you're a fan or a rider, motocross is all about courage, determination, and passion!</p>
-    <a href="#gallery" class="btn">See Riders Gallery</a>
+<!-- Motocross Section -->
+<section id="motocross" class="animate">
+<h2>Motocross Riders</h2>
+<div class="grid">
+<div class="card"><a href="https://www.instagram.com/kenroczen94/" target="_blank">Ken Roczen</a></div>
+<div class="card"><a href="https://www.instagram.com/elitomac/" target="_blank">Eli Tomac</a></div>
+<div class="card"><a href="https://www.instagram.com/jeffreyherlings/" target="_blank">Jeffrey Herlings</a></div>
+<div class="card"><a href="https://www.instagram.com/romainfebvre/" target="_blank">Romain Febvre</a></div>
+<div class="card"><a href="https://www.instagram.com/tim_gajser/" target="_blank">Tim Gajser</a></div>
+<div class="card"><a href="https://www.instagram.com/antoniocairoli/" target="_blank">Antonio Cairoli</a></div>
+<div class="card"><a href="https://www.instagram.com/cooperwebb/" target="_blank">Cooper Webb</a></div>
+<div class="card"><a href="https://www.instagram.com/musquinmarvin/" target="_blank">Marvin Musquin</a></div>
+<div class="card"><a href="https://www.instagram.com/jorgeprado/" target="_blank">Jorge Prado</a></div>
+<div class="card"><a href="https://www.instagram.com/jeremyseewer/" target="_blank">Jeremy Seewer</a></div>
+<div class="card"><a href="https://www.instagram.com/glenn_coldenhoff/" target="_blank">Glenn Coldenhoff</a></div>
+<div class="card"><a href="https://www.instagram.com/jettlawrence/" target="_blank">Jett Lawrence</a></div>
+<div class="card"><a href="https://www.instagram.com/hunterlawrence/" target="_blank">Hunter Lawrence</a></div>
+<div class="card"><a href="https://www.instagram.com/arnaudtonus/" target="_blank">Arnaud Tonus</a></div>
+<div class="card"><a href="https://www.instagram.com/maxanstie/" target="_blank">Max Anstie</a></div>
+</div>
+<button class="btn" id="toggleMXChamp">View Champions</button>
+<ul id="mxChampList" style="display:none; text-align:center; margin-top:15px;">
+<li>Ken Roczen (2020)</li>
+<li>Tim Gajser (2021)</li>
+<li>Jeffrey Herlings (2019)</li>
+</ul>
 </section>
 
-<section id="gallery" class="animate">
-    <h2>Famous Riders</h2>
-    <div class="rider-card">Eli Tomac</div>
-    <div class="rider-card">Ken Roczen</div>
-    <div class="rider-card">Cooper Webb</div>
-    <div class="rider-card">Jason Anderson</div>
-    <div class="rider-card">Chase Sexton</div>
-    <div class="rider-card">Justin Barcia</div>
-    <div class="rider-card">Marvin Musquin</div>
-    <div class="rider-card">Joey Savatgy</div>
-    <div class="rider-card">Adam Cianciarulo</div>
-    <div class="rider-card">Dylan Ferrandis</div>
+<!-- Supercross Section -->
+<section id="supercross" class="animate">
+<h2>Supercross Riders</h2>
+<div class="grid">
+<div class="card"><a href="https://www.instagram.com/cooperwebb/" target="_blank">Cooper Webb</a></div>
+<div class="card"><a href="https://www.instagram.com/elitomac/" target="_blank">Eli Tomac</a></div>
+<div class="card"><a href="https://www.instagram.com/kenroczen94/" target="_blank">Ken Roczen</a></div>
+<div class="card"><a href="https://www.instagram.com/chasesexton/" target="_blank">Chase Sexton</a></div>
+<div class="card"><a href="https://www.instagram.com/justinbarcia/" target="_blank">Justin Barcia</a></div>
+<div class="card"><a href="https://www.instagram.com/malcolmstewart/" target="_blank">Malcolm Stewart</a></div>
+<div class="card"><a href="https://www.instagram.com/jasonandersonmx/" target="_blank">Jason Anderson</a></div>
+<div class="card"><a href="https://www.instagram.com/adamcianciarulo/" target="_blank">Adam Cianciarulo</a></div>
+<div class="card"><a href="https://www.instagram.com/justincooper_/" target="_blank">Justin Cooper</a></div>
+<div class="card"><a href="https://www.instagram.com/joshimoda/" target="_blank">Jo Shimoda</a></div>
+<div class="card"><a href="https://www.instagram.com/christian_craig/" target="_blank">Christian Craig</a></div>
+<div class="card"><a href="https://www.instagram.com/joeysavatgy/" target="_blank">Joey Savatgy</a></div>
+<div class="card"><a href="https://www.instagram.com/aaronplessinger/" target="_blank">Aaron Plessinger</a></div>
+<div class="card"><a href="https://www.instagram.com/austinforkner/" target="_blank">Austin Forkner</a></div>
+<div class="card"><a href="https://www.instagram.com/jettlawrence/" target="_blank">Jett Lawrence</a></div>
+</div>
+<button class="btn" id="toggleSXChamp">View Champions</button>
+<ul id="sxChampList" style="display:none; text-align:center; margin-top:15px;">
+<li>Cooper Webb (2021)</li>
+<li>Eli Tomac (2020)</li>
+<li>Ken Roczen (2019)</li>
+</ul>
 </section>
 
-<section id="seasons" class="animate">
-    <h2>Past MX Seasons</h2>
-    <div class="season-card">2024 - Eli Tomac</div>
-    <div class="season-card">2023 - Cooper Webb</div>
-    <div class="season-card">2022 - Ken Roczen</div>
-    <div class="season-card">2021 - Jason Anderson</div>
-    <div class="season-card">2020 - Eli Tomac</div>
-    <div class="season-card">2019 - Cooper Webb</div>
-    <div class="season-card">2018 - Marvin Musquin</div>
+<!-- Enduro Section -->
+<section id="enduro" class="animate">
+<h2>Enduro Riders</h2>
+<div class="grid">
+<div class="card"><a href="#">Kalle L. (Fin)</a></div>
+<div class="card"><a href="#">Brad Freeman</a></div>
+<div class="card"><a href="#">Steve Holcombe (GB)</a></div>
+<div class="card"><a href="#">Manuel Lettenbichler</a></div>
+<div class="card"><a href="#">Josep Garcia</a></div>
+<div class="card"><a href="#">Andrea Verona</a></div>
+<div class="card"><a href="#">Mathieu van der Poel</a></div>
+<div class="card"><a href="#">Wil Ruprecht</a></div>
+<div class="card"><a href="#">Colton Haaker</a></div>
+<div class="card"><a href="#">Roope Tonteri</a></div>
+<div class="card"><a href="#">Graham Jarvis</a></div>
+<div class="card"><a href="#">Billy Bolt</a></div>
+<div class="card"><a href="#">Louisa Porcelli</a></div>
+<div class="card"><a href="#">Jonny Walker</a></div>
+<div class="card"><a href="#">Manuel Lettenbichler</a></div>
+</div>
+<button class="btn" id="toggleEnduroChamp">View Champions</button>
+<ul id="enduroChampList" style="display:none; text-align:center; margin-top:15px;">
+<li>Kalle L. (2021)</li>
+<li>Brad Freeman (2020)</li>
+<li>Josep Garcia (2019)</li>
+</ul>
 </section>
 
+<!-- F1 Section -->
+<section id="f1" class="animate">
+<h2>F1 Drivers</h2>
+<div class="grid">
+<div class="card"><a href="https://www.instagram.com/lewishamilton/" target="_blank">Lewis Hamilton</a></div>
+<div class="card"><a href="https://www.instagram.com/maxverstappen1/" target="_blank">Max Verstappen</a></div>
+<div class="card"><a href="https://www.instagram.com/charles_leclerc/" target="_blank">Charles Leclerc</a></div>
+<div class="card"><a href="#">Sebastian Vettel</a></div>
+<div class="card"><a href="#">Fernando Alonso</a></div>
+<div class="card"><a href="#">Valtteri Bottas</a></div>
+<div class="card"><a href="#">George Russell</a></div>
+<div class="card"><a href="#">Carlos Sainz</a></div>
+<div class="card"><a href="#">Lando Norris</a></div>
+<div class="card"><a href="#">Daniel Ricciardo</a></div>
+<div class="card"><a href="#">Esteban Ocon</a></div>
+<div class="card"><a href="#">Yuki Tsunoda</a></div>
+<div class="card"><a href="#">Kevin Magnussen</a></div>
+<div class="card"><a href="#">Mick Schumacher</a></div>
+<div class="card"><a href="#">Alexander Albon</a></div>
+</div>
+<button class="btn" id="toggleF1Champ">View Champions</button>
+<ul id="f1ChampList" style="display:none; text-align:center; margin-top:15px;">
+<li>Lewis Hamilton (2020)</li>
+<li>Max Verstappen (2021)</li>
+<li>Lewis Hamilton (2019)</li>
+</ul>
+</section>
+
+<!-- MXoN Section -->
+<section id="mxon" class="animate">
+<h2>MXoN Champions</h2>
+<div class="grid">
+<div class="card"><a href="#">USA</a></div>
+<div class="card"><a href="#">France</a></div>
+<div class="card"><a href="#">Belgium</a></div>
+<div class="card"><a href="#">Italy</a></div>
+<div class="card"><a href="#">Germany</a></div>
+<div class="card"><a href="#">Australia</a></div>
+<div class="card"><a href="#">Netherlands</a></div>
+<div class="card"><a href="#">Spain</a></div>
+<div class="card"><a href="#">Great Britain</a></div>
+<div class="card"><a href="#">Sweden</a></div>
+<div class="card"><a href="#">Finland</a></div>
+<div class="card"><a href="#">Norway</a></div>
+<div class="card"><a href="#">Czech Republic</a></div>
+<div class="card"><a href="#">Russia</a></div>
+<div class="card"><a href="#">Canada</a></div>
+</div>
+<button class="btn" id="toggleMxon">View Champions</button>
+<ul id="mxonList" style="display:none; text-align:center; margin-top:15px;">
+<li>USA - 22 wins</li>
+<li>France - 13 wins</li>
+<li>Belgium - 12 wins</li>
+</ul>
+</section>
+
+<!-- Contact Section -->
 <section id="contact" class="animate">
-    <h2>Contact</h2>
-    <p>Want to get in touch? Email us at <strong>shakulprime3@gmail.com</strong> or follow us on social media for the latest motocross updates.</p>
+<h2>Contact</h2>
+<p>Email: <strong>shakulprime3@gmail.com</strong></p>
+<p>Instagram: <a href="https://www.instagram.com/shaku1prime" target="_blank">@shaku1prime</a></p>
+<p>Phone: <strong>+256 760724695</strong></p>
 </section>
 
 <footer>
-    <p>&copy; 2025 SHAKULPRIME. All rights reserved.</p>
+<p>&copy; 2025 SHAKULPRIME. All rights reserved.</p>
 </footer>
 
 <script>
-// Scroll reveal animations
+// Scroll animations
 const sections = document.querySelectorAll('.animate');
 const revealSection = () => {
-    const triggerBottom = window.innerHeight * 0.85;
-    sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        if(sectionTop < triggerBottom) section.classList.add('visible');
-    });
-}
+  const triggerBottom = window.innerHeight * 0.85;
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+    if(sectionTop < triggerBottom) section.classList.add('visible');
+  });
+};
 window.addEventListener('scroll', revealSection);
 window.addEventListener('load', revealSection);
+
+// Toggle lists
+function setupToggle(btnId, listId){
+  const btn = document.getElementById(btnId);
+  const list = document.getElementById(listId);
+  btn.addEventListener('click', ()=>{
+    if(list.style.display==='none'){ list.style.display='block'; btn.textContent='Hide Champions'; }
+    else{ list.style.display='none'; btn.textContent='View Champions'; }
+  });
+}
+setupToggle('toggleMXChamp','mxChampList');
+setupToggle('toggleSXChamp','sxChampList');
+setupToggle('toggleEnduroChamp','enduroChampList');
+setupToggle('toggleF1Champ','f1ChampList');
+setupToggle('toggleMxon','mxonList');
 </script>
 
 </body>
