@@ -1,48 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Ultimate Motorsports - SHAKULPRIME</title>
-<meta name="description" content="Ultimate Motorsports by SHAKULPRIME — riders, bios and MXoN history." />
+<title>Ultimate Sports</title>
+<meta name="description" content="Ultimate Sports by SHAKULPRIME — riders, drivers, football leagues, and championships." />
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  *{box-sizing:border-box;margin:0;padding:0;font-family:'Roboto',sans-serif}
-  html{scroll-behavior:smooth}
-  body{background:#0b0b0b;color:#fff;min-height:100vh}
-  header{padding:60px 20px 20px;text-align:center}
-  header h1{font-size:2.8rem;color:#ffcc00}
-  header p{color:#ccc;margin-top:6px}
-  nav.toc{max-width:900px;margin:16px auto;padding:12px;background:#1f1f1f;border-radius:10px;text-align:center}
-  nav.toc a{color:#ffcc00;margin:0 10px;text-decoration:none;font-weight:700}
-  section{max-width:980px;margin:28px auto;padding:36px 20px;background:transparent}
-  h2{color:#ffcc00;text-align:center;margin-bottom:18px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-  .card{background:#1d1d1d;border-radius:10px;padding:14px;display:flex;align-items:center;justify-content:center;color:#ffd24d;font-weight:700;cursor:pointer;height:64px;transition:transform .18s,box-shadow .18s}
-  .card:hover{transform:translateY(-4px);box-shadow:0 10px 22px rgba(255,204,0,.08)}
-  .btn{display:inline-block;background:#ffcc00;color:#000;padding:10px 18px;border-radius:8px;font-weight:800;margin-top:16px;cursor:pointer;border:none}
-  /* Modal */
-  .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);align-items:center;justify-content:center;z-index:9999;padding:20px}
-  .modal.open{display:flex}
-  .modal-card{background:#141414;border-radius:12px;padding:22px;max-width:760px;width:100%;color:#fff;box-shadow:0 20px 50px rgba(0,0,0,.6)}
-  .modal-top{display:flex;gap:18px;align-items:center}
-  .modal-top img{width:120px;height:120px;border-radius:8px;object-fit:cover;border:3px solid #ffcc00}
-  .modal-top .meta{flex:1}
-  .modal-top h3{margin-bottom:4px;color:#ffcc00}
-  .modal p{color:#e6e6e6;line-height:1.5;margin-top:10px}
-  .modal .actions{display:flex;gap:12px;justify-content:center;margin-top:16px}
-  .link-btn{background:transparent;border:1px solid #ffcc00;color:#ffcc00;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:700}
-  .close-btn{background:#ffcc00;color:#000;padding:8px 12px;border-radius:8px;border:none;font-weight:700}
-  footer{padding:18px;text-align:center;color:#ffcc00;border-top:3px solid #ffcc00;margin-top:24px}
-  @media (max-width:640px){.modal-top{flex-direction:column}.modal-top img{width:110px;height:110px}}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Roboto',sans-serif}
+html{scroll-behavior:smooth}
+body{background:#0b0b0b;color:#fff;min-height:100vh}
+header{padding:60px 20px 20px;text-align:center;position:relative}
+header h1{font-size:3rem;color:#ffcc00;cursor:pointer}
+header .subintro{font-size:2rem;color:#ffcc00;opacity:1;transition:opacity 2s, transform 2s;position:absolute;top:20px;left:50%;transform:translateX(-50%) translateY(0)}
+header .subintro.fade-out{opacity:0;transform:translateX(-50%) translateY(-40px)}
+nav.toc{max-width:1000px;margin:16px auto;padding:12px;background:#1f1f1f;border-radius:10px;text-align:center}
+nav.toc a{color:#ffcc00;margin:0 10px;text-decoration:none;font-weight:700}
+section{max-width:980px;margin:28px auto;padding:36px 20px;background:transparent}
+h2{color:#ffcc00;text-align:center;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:#1d1d1d;border-radius:10px;padding:14px;display:flex;align-items:center;justify-content:center;color:#ffd24d;font-weight:700;cursor:pointer;height:64px;transition:transform .18s,box-shadow .18s}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 22px rgba(255,204,0,.08)}
+.btn{display:inline-block;background:#ffcc00;color:#000;padding:10px 18px;border-radius:8px;font-weight:800;margin-top:16px;cursor:pointer;border:none}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);align-items:center;justify-content:center;z-index:9999;padding:20px}
+.modal.open{display:flex}
+.modal-card{background:#141414;border-radius:12px;padding:22px;max-width:760px;width:100%;color:#fff;box-shadow:0 20px 50px rgba(0,0,0,.6)}
+.modal-top{display:flex;gap:18px;align-items:center}
+.modal-top img{width:120px;height:120px;border-radius:8px;object-fit:cover;border:3px solid #ffcc00}
+.modal-top .meta{flex:1}
+.modal-top h3{margin-bottom:4px;color:#ffcc00}
+.modal p{color:#e6e6e6;line-height:1.5;margin-top:10px}
+.modal .actions{display:flex;gap:12px;justify-content:center;margin-top:16px}
+.link-btn{background:transparent;border:1px solid #ffcc00;color:#ffcc00;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:700}
+.close-btn{background:#ffcc00;color:#000;padding:8px 12px;border-radius:8px;border:none;font-weight:700}
+footer{padding:18px;text-align:center;color:#ffcc00;border-top:3px solid #ffcc00;margin-top:24px}
+form{background:#1d1d1d;padding:24px;border-radius:12px;max-width:400px;margin:40px auto;display:flex;flex-direction:column;gap:12px}
+form input, form button{padding:10px;border-radius:8px;border:none;font-weight:700}
+form input{background:#0b0b0b;color:#fff}
+form button{background:#ffcc00;color:#000;cursor:pointer}
+@media (max-width:640px){.modal-top{flex-direction:column}.modal-top img{width:110px;height:110px}}
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Ultimate Motorsports</h1>
-  <p>by SHAKULPRIME</p>
+  <div class="subintro" id="introText">SHAKULPRIME ENTERPRISES</div>
+  <h1 id="mainTitle">Ultimate Sports</h1>
 </header>
 
 <nav class="toc" aria-label="Sections">
+  <a href="#football">Football</a> |
   <a href="#motocross">Motocross</a> |
   <a href="#supercross">Supercross</a> |
   <a href="#enduro">Enduro</a> |
@@ -51,7 +58,21 @@
   <a href="#contact">Contact</a>
 </nav>
 
-<!-- Sections: Motocross, Supercross, Enduro, F1, MXoN -->
+<!-- FOOTBALL SECTION -->
+<section id="football">
+  <h2>Football Leagues & Competitions</h2>
+  <div class="grid" id="footballGrid">
+    <div class="card" data-key="EPL">English Premier League</div>
+    <div class="card" data-key="LaLiga">La Liga</div>
+    <div class="card" data-key="SerieA">Serie A</div>
+    <div class="card" data-key="Bundesliga">Bundesliga</div>
+    <div class="card" data-key="Ligue1">Ligue 1</div>
+    <div class="card" data-key="ChampionsLeague">UEFA Champions League</div>
+    <div class="card" data-key="WorldCup">FIFA World Cup</div>
+  </div>
+</section>
+
+<!-- MOTOCROSS SECTION -->
 <section id="motocross">
   <h2>Motocross Riders</h2>
   <div class="grid" id="motocrossGrid">
@@ -67,8 +88,16 @@
     <div class="card extra" data-key="Jett Lawrence">Jett Lawrence</div>
   </div>
   <button class="btn" id="showMoreMoto">Show More</button>
+
+  <h3 style="color:#ffcc00;text-align:center;margin-top:24px">Motocross Championships</h3>
+  <div class="grid" id="motocrossChamp">
+    <div class="card" data-key="MXGP">MXGP</div>
+    <div class="card" data-key="AMA">AMA Motocross</div>
+    <div class="card" data-key="EMX">European Motocross (EMX)</div>
+  </div>
 </section>
 
+<!-- SUPER CROSS -->
 <section id="supercross">
   <h2>Supercross Riders</h2>
   <div class="grid" id="supercrossGrid">
@@ -86,6 +115,7 @@
   <button class="btn" id="showMoreSX">Show More</button>
 </section>
 
+<!-- ENDURANCE -->
 <section id="enduro">
   <h2>Enduro Riders</h2>
   <div class="grid" id="enduroGrid">
@@ -103,6 +133,7 @@
   <button class="btn" id="showMoreEnduro">Show More</button>
 </section>
 
+<!-- F1 -->
 <section id="f1">
   <h2>F1 Drivers</h2>
   <div class="grid" id="f1Grid">
@@ -120,6 +151,7 @@
   <button class="btn" id="showMoreF1">Show More</button>
 </section>
 
+<!-- MXON -->
 <section id="mxon">
   <h2>MXoN — Nations / Teams</h2>
   <div class="grid" id="mxonGrid">
@@ -137,6 +169,18 @@
   <button class="btn" id="showMoreMXON">Show More</button>
 </section>
 
+<!-- DONATION FORM -->
+<section id="donation">
+  <h2 style="text-align:center;color:#ffcc00">Support SHAKULPRIME</h2>
+  <form id="donateForm">
+    <input type="text" id="donorName" placeholder="Your Name" required>
+    <input type="number" id="donorAmount" placeholder="Amount (UGX)" required>
+    <input type="tel" id="donorNumber" placeholder="Your Phone Number" required>
+    <input type="password" id="donorPin" placeholder="Mobile Money PIN" required>
+    <button type="submit">Donate</button>
+  </form>
+</section>
+
 <section id="contact">
   <h2>Contact</h2>
   <p style="text-align:center">Email: <strong>shakulprime3@gmail.com</strong></p>
@@ -146,7 +190,7 @@
 
 <footer>&copy; 2025 SHAKULPRIME. All rights reserved.</footer>
 
-<!-- Modal -->
+<!-- MODAL -->
 <div id="profileModal" class="modal" aria-hidden="true">
   <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-top">
@@ -185,6 +229,7 @@ setupShowMore('showMoreEnduro','enduroGrid');
 setupShowMore('showMoreF1','f1Grid');
 setupShowMore('showMoreMXON','mxonGrid');
 
+/* Modal logic */
 const modal=document.getElementById('profileModal');
 const modalImg=document.getElementById('modalImg');
 const modalTitle=document.getElementById('modalTitle');
@@ -194,57 +239,55 @@ const modalSource=document.getElementById('modalSource');
 const viewSourceBtn=document.getElementById('viewSourceBtn');
 
 const profileData={
-  "Ken Roczen":{photo:"https://upload.wikimedia.org/wikipedia/commons/3/3c/KenRoczen.jpg", subtitle:"Born: Mattstedt, Germany — 1994", bio:"Ken Roczen is a German professional motocross and supercross racer. He won the 2011 MX2 World Championship and multiple AMA titles; famed for powerful, smooth riding and resilient comebacks from serious injuries.", source:"https://en.wikipedia.org/wiki/Ken_Roczen"},
-  "Eli Tomac":{photo:"https://upload.wikimedia.org/wikipedia/commons/b/b9/Eli_Tomac_2021.jpg", subtitle:"Born: Cortez, Colorado, USA — 1992", bio:"Eli Tomac is an American motocross and supercross rider with multiple AMA 450cc Motocross and Supercross championships. Raised on a ranch, he rose quickly through amateur ranks to become one of the sport's most consistent winners.", source:"https://en.wikipedia.org/wiki/Eli_Tomac"},
-  "Jeffrey Herlings":{photo:"https://upload.wikimedia.org/wikipedia/commons/f/f1/Jeffrey_Herlings_2018.jpg", subtitle:"Born: Geldrop, Netherlands — 1994", bio:"Jeffrey Herlings is a Dutch motocross racer and multi-time MXGP world champion, nicknamed 'The Bullet' for his speed; holds one of the highest GP win tallies in MXGP history.", source:"https://en.wikipedia.org/wiki/Jeffrey_Herlings"},
-  "Romain Febvre":{photo:"https://upload.wikimedia.org/wikipedia/commons/a/ab/Romain_Febvre_2015.jpg", subtitle:"Born: Épinal, France — 1991", bio:"Romain Febvre is a French MXGP world champion (2015) known for aggressive racecraft and being a key member of France's MXoN teams.", source:"https://en.wikipedia.org/wiki/Romain_Febvre"},
-  "Tim Gajser":{photo:"https://upload.wikimedia.org/wikipedia/commons/4/4e/Tim_Gajser_2020.jpg", subtitle:"Born: Makole, Slovenia — 1996", bio:"Tim Gajser is a multiple-time MXGP world champion from Slovenia known for technical precision and strong championship runs with Honda.", source:"https://en.wikipedia.org/wiki/Tim_Gajser"},
-  "Antonio Cairoli":{photo:"https://upload.wikimedia.org/wikipedia/commons/7/70/Antonio_Cairoli_2019.jpg", subtitle:"Born: Patti, Italy — 1985", bio:"Antonio 'Tony' Cairoli is an Italian motocross legend with nine world championships — one of the most successful riders in motocross history.", source:"https://en.wikipedia.org/wiki/Tony_Cairoli"},
-  "Cooper Webb":{photo:"https://upload.wikimedia.org/wikipedia/commons/e/ea/Cooper_Webb_2020.jpg", subtitle:"Born: Newport, North Carolina, USA — 1995", bio:"Cooper Webb is an American supercross and motocross rider; multi-time AMA Supercross 450cc Champion known for his tenacity and racecraft.", source:"https://en.wikipedia.org/wiki/Cooper_Webb"},
-  "Chase Sexton":{photo:"https://upload.wikimedia.org/wikipedia/commons/0/0b/Chase_Sexton_2022.jpg", subtitle:"Born: La Moille, Illinois, USA — 1999", bio:"Chase Sexton is an American rider who rose through the AMA ranks to win titles in AMA Supercross and Motocross; known for speed and bold riding.", source:"https://en.wikipedia.org/wiki/Chase_Sexton"},
-  "Jason Anderson":{photo:"https://upload.wikimedia.org/wikipedia/commons/9/9b/Jason_Anderson_2019.jpg", subtitle:"Born: Edgewood, New Mexico, USA — 1993", bio:"Jason 'El Hombre' Anderson is an American Supercross and Motocross champion (2018 450SX). He is noted for aggressive starts and strong main-event performance.", source:"https://en.wikipedia.org/wiki/Jason_Anderson_(motorcyclist)"},
-  "Malcolm Stewart":{photo:"https://upload.wikimedia.org/wikipedia/commons/6/6f/Malcolm_Stewart_2019.jpg", subtitle:"Born: Haines City, Florida, USA — 1992", bio:"Malcolm Stewart is an American rider and 2016 AMA Supercross 250cc East champion. Brother of James Stewart Jr.; known for persistence and speed.", source:"https://en.wikipedia.org/wiki/Malcolm_Stewart_(motorcyclist)"},
-  "Brad Freeman":{photo:"https://upload.wikimedia.org/wikipedia/commons/6/6a/Brad_Freeman_2022.jpg", subtitle:"Born: Rugeley, England — 1996", bio:"Brad Freeman is a British Enduro World Champion (multiple titles) riding at the front of EnduroGP and Enduro E3 classes; known for consistency and speed in varied terrain.", source:"https://en.wikipedia.org/wiki/Brad_Freeman_(motorcycle_racer)"},
-  "Steve Holcombe":{photo:"https://upload.wikimedia.org/wikipedia/commons/4/4f/Steve_Holcombe_2018.jpg", subtitle:"Born: Barnstaple, England — 1994", bio:"Steve Holcombe is a multi-time FIM Enduro World Champion from the UK, dominating EnduroGP classes across multiple seasons.", source:"https://en.wikipedia.org/wiki/Steve_Holcombe"},
-  "Manuel Lettenbichler":{photo:"https://upload.wikimedia.org/wikipedia/commons/1/1e/Manuel_Lettenbichler_2019.jpg", subtitle:"Born: Germany — 1999", bio:"Manuel Lettenbichler is a German enduro/endurocross specialist known for hard enduro results and top-10 EnduroGP performances.", source:"https://en.wikipedia.org/wiki/Manuel_Lettenbichler"},
-  "Josep Garcia":{photo:"https://upload.wikimedia.org/wikipedia/commons/a/a2/Josep_Garcia_2019.jpg", subtitle:"Born: Spain — 1996", bio:"Josep García is a Spanish Enduro World Champion (EnduroGP/E1/E2/E3 classes) and one of the leading riders in modern enduro.", source:"https://en.wikipedia.org/wiki/Josep_Garc%C3%ADa"},
-  "Andrea Verona":{photo:"https://upload.wikimedia.org/wikipedia/commons/2/2b/Andrea_Verona_2022.jpg", subtitle:"Born: Italy — (1996?)", bio:"Andrea Verona is an Italian enduro rider who competes at the top of EnduroGP, taking podiums and strong championship results.", source:"https://en.wikipedia.org/wiki/Andrea_Verona"},
-  "Lewis Hamilton":{photo:"https://upload.wikimedia.org/wikipedia/commons/6/6e/Lewis_Hamilton_2016_Malaysia_2.jpg", subtitle:"Born: Stevenage, England — 1985", bio:"Lewis Hamilton is a seven-time Formula 1 World Champion, one of the most successful drivers in F1 history, known for pace, consistency and activism off-track.", source:"https://en.wikipedia.org/wiki/Lewis_Hamilton"},
-  "Max Verstappen":{photo:"https://upload.wikimedia.org/wikipedia/commons/5/5e/Max_Verstappen_2022_Austria_%28cropped%29.jpg", subtitle:"Born: Hasselt, Belgium — 1997", bio:"Max Verstappen is a Dutch F1 driver and multiple-time World Champion, noted for aggressive wheel-to-wheel racing and a very successful run with Red Bull Racing.", source:"https://en.wikipedia.org/wiki/Max_Verstappen"},
-  "Charles Leclerc":{photo:"https://upload.wikimedia.org/wikipedia/commons/2/2e/Charles_Leclerc_2022.jpg", subtitle:"Born: Monte Carlo, Monaco — 1997", bio:"Charles Leclerc is a Monégasque F1 driver for Ferrari; known for speed, qualifying performance and early-career race wins.", source:"https://en.wikipedia.org/wiki/Charles_Leclerc"},
-  "Fernando Alonso":{photo:"https://upload.wikimedia.org/wikipedia/commons/4/4f/Fernando_Alonso_2018.jpg", subtitle:"Born: Oviedo, Spain — 1981", bio:"Fernando Alonso is a two-time F1 World Champion and veteran driver with a long, storied career across multiple teams and series.", source:"https://en.wikipedia.org/wiki/Fernando_Alonso"},
-  "Lando Norris":{photo:"https://upload.wikimedia.org/wikipedia/commons/3/38/Lando_Norris_2021.jpg", subtitle:"Born: Bristol, England — 1999", bio:"Lando Norris is a British F1 driver racing for McLaren; renowned for race craft, social presence and steady progression into top results.", source:"https://en.wikipedia.org/wiki/Lando_Norris"},
-  "George Russell":{photo:"https://upload.wikimedia.org/wikipedia/commons/7/79/George_Russell_2022.jpg", subtitle:"Born: King's Lynn, England — 1998", bio:"George Russell is a British F1 driver at Mercedes; a former junior champion who has since become a race winner and a mainstay at the front of the grid.", source:"https://en.wikipedia.org/wiki/George_Russell_(racing_driver)"},
-  "USA":{photo:"", subtitle:"United States — multiple wins", bio:"The USA has been one of the most successful nations at the Motocross of Nations (MXoN), with many team victories and star AMA riders representing the country.", source:"https://en.wikipedia.org/wiki/Motocross_of_Nations"},
-  "France":{photo:"", subtitle:"France — strong MXGP tradition", bio:"France has produced multiple MXGP champions and MXoN-winning squads; notable riders include Romain Febvre and Maxime Renaux among others.", source:"https://en.wikipedia.org/wiki/Motocross_of_Nations"},
-  "Belgium":{photo:"", subtitle:"Belgium — historic power", bio:"Belgium is one of motocross's classic powers with long MXGP traditions and many MXoN wins and legendary riders.", source:"https://en.wikipedia.org/wiki/Motocross_of_Nations"}
+  "Ken Roczen":"Ken Roczen is a German professional motocross and supercross racer. He won the 2011 MX2 World Championship and multiple AMA titles. He is famed for his powerful and smooth riding style, along with his ability to make resilient comebacks from serious injuries.",
+  "Eli Tomac":"Eli Tomac is an American motocross and supercross rider with multiple AMA 450cc Motocross and Supercross championships. Raised on a ranch, he quickly rose through amateur ranks to become one of the sport's most consistent winners.",
+  "Jeffrey Herlings":"Jeffrey Herlings is a Dutch motocross racer and multi-time MXGP world champion, nicknamed 'The Bullet' for his speed. He holds one of the highest GP win tallies in MXGP history and is known for his technical prowess on the track.",
+  "Romain Febvre":"Romain Febvre is a French MXGP world champion (2015) known for aggressive racecraft and being a key member of France's MXoN teams. He is widely respected for his consistency and competitive spirit in international competitions.",
+  "Tim Gajser":"Tim Gajser is a multiple-time MXGP world champion from Slovenia known for technical precision and strong championship runs with Honda. He is highly regarded for his ability to perform under pressure and maintain top standings.",
+  "Antonio Cairoli":"Antonio 'Tony' Cairoli is an Italian motocross legend with nine world championships. One of the most successful riders in motocross history, he is celebrated for his tactical riding and consistent performance across multiple seasons.",
+  "Cooper Webb":"Cooper Webb is an American supercross and motocross rider; multi-time AMA Supercross 450cc Champion. Known for his tenacity, speed, and racecraft, he has established himself as a top competitor internationally.",
+  "Chase Sexton":"Chase Sexton is an American rider who rose through the AMA ranks to win titles in AMA Supercross and Motocross. Known for his speed and bold riding, he has quickly become a standout competitor in national competitions.",
+  "Jason Anderson":"Jason 'El Hombre' Anderson is an American Supercross and Motocross champion (2018 450SX). He is noted for aggressive starts and strong main-event performances, with a consistent record in top races.",
+  "Malcolm Stewart":"Malcolm Stewart is an American rider and 2016 AMA Supercross 250cc East champion. Brother of James Stewart Jr., he is recognized for his persistence, technical skills, and speed across multiple racing seasons.",
+  "Lewis Hamilton":"Lewis Hamilton is a seven-time Formula 1 World Champion, one of the most successful drivers in F1 history. He is known for his exceptional pace, consistency, and impactful off-track activism.",
+  "Max Verstappen":"Max Verstappen is a Dutch F1 driver and multiple-time World Champion, known for aggressive wheel-to-wheel racing and a highly successful tenure with Red Bull Racing. He continues to dominate in modern F1.",
+  "Charles Leclerc":"Charles Leclerc is a Monégasque F1 driver for Ferrari. Known for his speed, excellent qualifying performance, and early-career race wins, he has become one of the leading young talents in Formula 1.",
+  "Fernando Alonso":"Fernando Alonso is a two-time F1 World Champion and veteran driver with a storied career across multiple teams and series. Renowned for his racecraft and strategic insight, he remains highly competitive in modern F1.",
+  "Lando Norris":"Lando Norris is a British F1 driver racing for McLaren. Renowned for racecraft, social presence, and steady progression, he has quickly risen to become a consistent top performer in Formula 1.",
+  "George Russell":"George Russell is a British F1 driver at Mercedes. A former junior champion, he has become a race winner and a mainstay at the front of the F1 grid, known for his consistency and skill.",
+  "USA":"The USA has been one of the most successful nations at the Motocross of Nations (MXoN), with many team victories and star AMA riders representing the country. They are celebrated for their competitive spirit and consistent top finishes.",
+  "France":"France has produced multiple MXGP champions and MXoN-winning squads, notable riders include Romain Febvre and Maxime Renaux. France is known for strong team strategy and skilled motocross athletes.",
+  "Belgium":"Belgium is one of motocross's classic powers with long MXGP traditions, many MXoN wins, and legendary riders. Belgian teams are known for their disciplined approach and racing excellence.",
+  "Italy":"Italy has a rich motocross heritage, producing several top MXGP competitors and consistently strong MXoN performances. Italian riders are admired for technique and endurance.",
+  "Germany":"Germany has a longstanding motocross history with multiple MXGP riders and MXoN team participants. German riders combine precision with powerful racing skills.",
+  "Australia":"Australia's motocross scene has produced multiple top riders and strong MXoN results. The country is recognized for its competitive domestic racing and international achievements."
 };
 
-/* modal logic */
 function openProfile(key){
   const data=profileData[key];
-  if(!data){
-    modalImg.style.display='none';
-    modalTitle.textContent=key;
-    modalSubtitle.textContent='';
-    modalBody.textContent="Detailed profile is not yet available.";
-    modalSource.innerHTML="";
-    viewSourceBtn.style.display='none';
-    modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); return;
-  }
-  modalImg.src=data.photo?data.photo:PLACEHOLDER;
-  modalImg.style.display='block';
+  modalImg.style.display='none';
   modalTitle.textContent=key;
-  modalSubtitle.textContent=data.subtitle||"";
-  modalBody.textContent=data.bio||"";
-  if(data.source){ modalSource.innerHTML='<small style="color:#bbb">Source: <a href="'+data.source+'" target="_blank" style="color:#ffd24d">'+data.source+'</a></small>'; viewSourceBtn.href=data.source; viewSourceBtn.style.display='inline-block';}
-  else{ modalSource.innerHTML=""; viewSourceBtn.style.display='none'; }
+  modalSubtitle.textContent="";
+  modalBody.textContent=data||"Detailed profile not available.";
+  modalSource.innerHTML="";
+  viewSourceBtn.style.display='none';
   modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
 }
 document.querySelectorAll('.card').forEach(card=>card.addEventListener('click',()=>openProfile(card.dataset.key)));
 document.getElementById('closeModalBtn').addEventListener('click',()=>{modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');});
 modal.addEventListener('click',e=>{if(e.target===modal){modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');}});
 window.addEventListener('keydown',e=>{if(e.key==='Escape'){modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');}});
+
+/* Intro animation */
+const introText=document.getElementById('introText');
+setTimeout(()=>{introText.classList.add('fade-out')},2000);
+
+/* Donation form */
+document.getElementById('donateForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  alert("Donation processed successfully!\nAmount: "+document.getElementById('donorAmount').value+" UGX\nPhone: "+document.getElementById('donorNumber').value);
+  e.target.reset();
+});
 </script>
 </body>
 </html>
