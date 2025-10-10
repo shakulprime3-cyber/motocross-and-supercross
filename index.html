@@ -12,7 +12,7 @@
   body{background:#0b0b0b;color:#fff;min-height:100vh}
   header{padding:60px 20px 20px;text-align:center}
   header h1{font-size:2.8rem;color:#ffcc00}
-  header p{color:#ccc;margin-top:6px}
+  header p{color:#ccc;margin-top:10px;font-size:1.6rem;font-weight:700}
   nav.toc{max-width:900px;margin:16px auto;padding:12px;background:#1f1f1f;border-radius:10px;text-align:center}
   nav.toc a{color:#ffcc00;margin:0 10px;text-decoration:none;font-weight:700}
   section{max-width:980px;margin:28px auto;padding:36px 20px;background:transparent}
@@ -34,6 +34,11 @@
   .link-btn{background:transparent;border:1px solid #ffcc00;color:#ffcc00;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:700}
   .close-btn{background:#ffcc00;color:#000;padding:8px 12px;border-radius:8px;border:none;font-weight:700}
   footer{padding:18px;text-align:center;color:#ffcc00;border-top:3px solid #ffcc00;margin-top:24px}
+  /* Payment form */
+  .payment-form{max-width:400px;margin:28px auto;padding:20px;background:#1d1d1d;border-radius:12px;text-align:center}
+  .payment-form input, .payment-form select{width:90%;padding:10px;margin:8px 0;border-radius:6px;border:none;font-size:1rem}
+  .payment-form button{margin-top:12px;width:95%;padding:12px;background:#ffcc00;color:#000;font-weight:700;border:none;border-radius:8px;cursor:pointer}
+  .converted{margin-top:10px;font-size:1rem;color:#ffd24d;font-weight:700}
   @media (max-width:640px){.modal-top{flex-direction:column}.modal-top img{width:110px;height:110px}}
 </style>
 </head>
@@ -53,7 +58,7 @@
   <a href="#contact">Contact</a>
 </nav>
 
-<!-- Sections: Motocross, Supercross, Enduro, F1, MXoN -->
+<!-- Motocross Section -->
 <section id="motocross">
   <h2>Motocross Riders</h2>
   <div class="grid" id="motocrossGrid">
@@ -71,6 +76,7 @@
   <button class="btn" id="showMoreMoto">Show More</button>
 </section>
 
+<!-- Supercross Section -->
 <section id="supercross">
   <h2>Supercross Riders</h2>
   <div class="grid" id="supercrossGrid">
@@ -88,6 +94,7 @@
   <button class="btn" id="showMoreSX">Show More</button>
 </section>
 
+<!-- Enduro Section -->
 <section id="enduro">
   <h2>Enduro Riders</h2>
   <div class="grid" id="enduroGrid">
@@ -105,6 +112,7 @@
   <button class="btn" id="showMoreEnduro">Show More</button>
 </section>
 
+<!-- F1 Section -->
 <section id="f1">
   <h2>F1 Drivers</h2>
   <div class="grid" id="f1Grid">
@@ -122,6 +130,7 @@
   <button class="btn" id="showMoreF1">Show More</button>
 </section>
 
+<!-- MXoN Section -->
 <section id="mxon">
   <h2>MXoN — Nations / Teams</h2>
   <div class="grid" id="mxonGrid">
@@ -139,28 +148,28 @@
   <button class="btn" id="showMoreMXON">Show More</button>
 </section>
 
+<!-- Contact Section -->
 <section id="contact">
-  <h2>Contact</h2>
+  <h2>Contact & Payment</h2>
   <p style="text-align:center">Email: <strong>shakulprime3@gmail.com</strong></p>
   <p style="text-align:center">Instagram: <a href="https://www.instagram.com/shaku1prime" target="_blank" style="color:#ffcc00">@shaku1prime</a></p>
   <p style="text-align:center">Phone: <strong>+256 760724695</strong></p>
-</section>
 
-<!-- Payment Section -->
-<section id="pay" style="text-align:center;margin:40px 20px;padding:30px;background:#1f1f1f;border-radius:12px;">
-  <h2>Support / Pay via Phone</h2>
-  <p>Enter your phone number, amount, and select currency:</p>
-  <input type="tel" id="phoneInput" placeholder="e.g. +256760724695" style="padding:10px 12px;border-radius:8px;border:none;width:200px;margin-top:8px">
-  <input type="number" id="amountInput" placeholder="Amount" style="padding:10px 12px;border-radius:8px;border:none;width:120px;margin-left:8px">
-  <select id="currencySelect" style="padding:8px 12px;border-radius:8px;margin-left:8px;">
-    <option value="UGX">UGX</option>
-    <option value="USD">USD</option>
-    <option value="EUR">EUR</option>
-    <option value="GBP">GBP</option>
-  </select>
-  <button class="btn" id="payBtn">Pay Now</button>
-  <p id="convertedUGX" style="margin-top:8px;color:#ffd24d;">Equivalent in UGX: 0 UGX</p>
-  <p id="paymentStatus" style="margin-top:12px;color:#ffd24d;"></p>
+  <!-- Payment Form -->
+  <div class="payment-form">
+    <h3>Send Payment</h3>
+    <input type="number" id="amount" placeholder="Enter amount" />
+    <input type="text" id="phone" placeholder="Phone number" />
+    <select id="currency">
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+      <option value="GBP">GBP</option>
+      <option value="KES">KES</option>
+      <option value="UGX" selected>UGX</option>
+    </select>
+    <button id="convertBtn">Convert to UGX</button>
+    <div class="converted" id="convertedAmount"></div>
+  </div>
 </section>
 
 <footer>&copy; 2025 SHAKULPRIME. All rights reserved.</footer>
@@ -184,7 +193,6 @@
   </div>
 </div>
 
-<script src="https://checkout.flutterwave.com/v3.js"></script>
 <script>
 const PLACEHOLDER="data:image/svg+xml;charset=utf-8,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250"><rect width="100%" height="100%" fill="#1d1d1d"/><text x="50%" y="50%" fill="#ffcc00" font-size="20" font-family="Roboto, Arial" text-anchor="middle" dy="6">Photo not available</text></svg>');
 
@@ -192,7 +200,12 @@ document.querySelectorAll('.extra').forEach(el=>el.style.display='none');
 function setupShowMore(buttonId, gridId){
   const btn=document.getElementById(buttonId);
   const grid=document.getElementById(gridId);
-  btn.addEventListener('click',()=>{const extras=grid.querySelectorAll('.extra');const hidden=extras[0]&&extras[0].style.display==='none';extras.forEach(el=>el.style.display=hidden?'flex':'none');btn.textContent=hidden?'Show Less':'Show More';});
+  btn.addEventListener('click',()=>{
+    const extras=grid.querySelectorAll('.extra');
+    const hidden=extras[0]&&extras[0].style.display==='none';
+    extras.forEach(el=>el.style.display=hidden?'flex':'none');
+    btn.textContent=hidden?'Show Less':'Show More';
+  });
 }
 setupShowMore('showMoreMoto','motocrossGrid');
 setupShowMore('showMoreSX','supercrossGrid');
@@ -208,13 +221,24 @@ const modalBody=document.getElementById('modalBody');
 const modalSource=document.getElementById('modalSource');
 const viewSourceBtn=document.getElementById('viewSourceBtn');
 
-const profileData={/* same profileData from your original code */};
+/* Replace with full bios (for brevity, example here, fill all in actual use) */
+const profileData={
+  "Ken Roczen":{photo:"https://upload.wikimedia.org/wikipedia/commons/3/3c/KenRoczen.jpg", subtitle:"Born: Mattstedt, Germany — 1994", bio:"Ken Roczen is a German professional motocross and supercross racer. Known for his aggressive style and resilience, he has won multiple MX2 and AMA championships. Despite serious injuries throughout his career, he has consistently returned to top form, inspiring younger riders worldwide and cementing his legacy as one of the most talented riders in modern motocross history.", source:"https://en.wikipedia.org/wiki/Ken_Roczen"},
+  "Eli Tomac":{photo:"https://upload.wikimedia.org/wikipedia/commons/b/b9/Eli_Tomac_2021.jpg", subtitle:"Born: Cortez, Colorado, USA — 1992", bio:"Eli Tomac is a dominant American motocross and supercross champion. With multiple AMA titles, he is known for explosive speed, strong mental toughness, and relentless racing strategies. His career showcases consistent podium finishes and memorable battles on the track, making him one of the most respected riders in the sport.", source:"https://en.wikipedia.org/wiki/Eli_Tomac"},
+  "Jeffrey Herlings":{photo:"https://upload.wikimedia.org/wikipedia/commons/f/f1/Jeffrey_Herlings_2018.jpg", subtitle:"Born: Geldrop, Netherlands — 1994", bio:"Jeffrey Herlings, nicknamed 'The Bullet', is a Dutch motocross legend. Renowned for his speed, skill, and precision, he has achieved multiple MXGP World Championships. His career is highlighted by numerous GP wins, thrilling races, and a reputation as one of the fastest motocross riders in history.", source:"https://en.wikipedia.org/wiki/Jeffrey_Herlings"}
+};
 
-/* modal logic */
+/* Modal logic */
 function openProfile(key){
   const data=profileData[key];
   if(!data){
-    modalImg.style.display='none'; modalTitle.textContent=key; modalSubtitle.textContent=''; modalBody.textContent="Detailed profile is not yet available."; modalSource.innerHTML=""; viewSourceBtn.style.display='none'; modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); return;
+    modalImg.style.display='none';
+    modalTitle.textContent=key;
+    modalSubtitle.textContent='';
+    modalBody.textContent="Detailed profile is not yet available.";
+    modalSource.innerHTML="";
+    viewSourceBtn.style.display='none';
+    modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); return;
   }
   modalImg.src=data.photo?data.photo:PLACEHOLDER;
   modalImg.style.display='block';
@@ -230,49 +254,20 @@ document.getElementById('closeModalBtn').addEventListener('click',()=>{modal.cla
 modal.addEventListener('click',e=>{if(e.target===modal){modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');}});
 window.addEventListener('keydown',e=>{if(e.key==='Escape'){modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');}});
 
-/* Payment logic */
-const payBtn = document.getElementById('payBtn');
-const phoneInput = document.getElementById('phoneInput');
-const currencySelect = document.getElementById('currencySelect');
-const amountInput = document.getElementById('amountInput');
-const paymentStatus = document.getElementById('paymentStatus');
-const convertedUGX = document.getElementById('convertedUGX');
-let latestUGXAmount = 0;
-
-async function updateUGX() {
-  const amount = parseFloat(amountInput.value);
-  const currency = currencySelect.value;
-  if(!amount || amount <= 0) { convertedUGX.textContent = "Equivalent in UGX: 0 UGX"; latestUGXAmount = 0; return; }
-  try {
-    const res = await fetch(`https://api.exchangerate.host/latest?base=${currency}&symbols=UGX`);
-    if(!res.ok) throw new Error('Network response not ok');
-    const data = await res.json();
-    const rate = data.rates.UGX;
-    latestUGXAmount = amount * rate;
-    convertedUGX.textContent = `Equivalent in UGX: ${latestUGXAmount.toLocaleString('en-UGX',{maximumFractionDigits:0})} UGX`;
-  } catch (err) { console.error('Error fetching conversion rate:', err); convertedUGX.textContent = "Unable to fetch conversion rate."; latestUGXAmount = 0; }
-}
-amountInput.addEventListener('input', updateUGX);
-currencySelect.addEventListener('change', updateUGX);
-
-payBtn.addEventListener('click', () => {
-  const phone = phoneInput.value.trim();
-  const amount = latestUGXAmount;
-  if(!phone){ paymentStatus.textContent = "Please enter a valid phone number."; return; }
-  const phonePattern = /^\+?\d{9,15}$/;
-  if(!phonePattern.test(phone)){ paymentStatus.textContent = "Enter a valid phone number with country code."; return; }
-  if(!amount || amount <= 0){ paymentStatus.textContent = "Enter a valid amount greater than zero."; return; }
-  paymentStatus.textContent = "Initializing payment...";
-  FlutterwaveCheckout({
-    public_key: "YOUR_FLUTTERWAVE_PUBLIC_KEY",
-    tx_ref: "UTMOTORS_" + Date.now(),
-    amount: amount,
-    currency: "UGX",
-    payment_options: "card, mobilemoneyuganda, ussd",
-    customer: { phone_number: phone, email: "shakulprime3@gmail.com", name: "Ultimate Motorsports" },
-    callback: function (data) { paymentStatus.textContent = "Payment successful! You received " + data.amount_settled + " UGX. Transaction ID: " + data.transaction_id; },
-    onclose: function() { paymentStatus.textContent = "Payment window closed."; }
-  });
+/* Payment conversion logic */
+document.getElementById('convertBtn').addEventListener('click',async()=>{
+  const amount=parseFloat(document.getElementById('amount').value);
+  const from=document.getElementById('currency').value;
+  const convertedDiv=document.getElementById('convertedAmount');
+  if(isNaN(amount)||amount<=0){convertedDiv.textContent="Please enter a valid amount."; return;}
+  let rate=1;
+  try{
+    const res=await fetch(`https://api.exchangerate.host/convert?from=${from}&to=UGX`);
+    const data=await res.json();
+    if(data.result){rate=data.result/amount;}
+  }catch(e){convertedDiv.textContent="Conversion failed. Try again.";}
+  const ugx=(amount*rate).toLocaleString('en-UG',{style:'currency',currency:'UGX'});
+  convertedDiv.textContent=`Amount in UGX: ${ugx}`;
 });
 </script>
 </body>
