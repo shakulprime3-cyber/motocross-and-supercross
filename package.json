@@ -1,0 +1,20 @@
+{
+  "name": "ultimate-sports",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js"
+  },
+  "keywords": [],
+  "author": "SHAKULPRIME",
+  "license": "ISC",
+  "description": "Ultimate Sports by SHAKULPRIME — riders, drivers, football leagues, and championships.",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "node-fetch": "^3.3.2"
+  }
+}
