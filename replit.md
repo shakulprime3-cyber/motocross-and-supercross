@@ -10,6 +10,12 @@ Ultimate Sports by SHAKULPRIME is a web application showcasing information about
 - Configured Node.js Express server with static file serving
 - Set up deployment configuration for autoscale
 - Server runs on port 5000 with proper host configuration (0.0.0.0)
+- **Added live football league standings feature**:
+  - Integrated API-Football service for real-time standings data
+  - Football league cards now clickable to display team standings
+  - Standings update automatically every 30 minutes
+  - Displays rank, team name, played, wins, draws, losses, goal difference, points, and recent form
+  - Secure API key management via Replit Secrets
 
 ## Project Architecture
 
@@ -42,11 +48,13 @@ ultimate-sports-web/
 
 2. **Interactive Elements**
    - Clickable cards that open modals with athlete/team information
+   - Football league cards display live standings with auto-refresh
    - Show More/Show Less buttons for expandable sections
    - Animated intro header
    - Donation form (frontend only, not connected to payment processor)
 
 3. **Backend API**
+   - `/api/standings/:leagueKey` endpoint for live football standings (API-Football integration)
    - `/api/chat` endpoint for OpenAI integration (requires API key)
    - Static file serving from public directory
 
@@ -55,6 +63,7 @@ ultimate-sports-web/
 ### Environment Variables
 The application uses the following environment variables:
 - `PORT`: Server port (default: 5000)
+- `FOOTBALL_API_KEY`: API-Football API key for live standings data
 - `OPENAI_API_KEY`: OpenAI API key for chat functionality (optional)
 
 ### Running the Application
