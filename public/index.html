@@ -38,7 +38,19 @@ form{background:#1d1d1d;padding:24px;border-radius:12px;max-width:400px;margin:4
 form input, form button{padding:10px;border-radius:8px;border:none;font-weight:700}
 form input{background:#0b0b0b;color:#fff}
 form button{background:#ffcc00;color:#000;cursor:pointer}
-@media (max-width:640px){.modal-top{flex-direction:column}.modal-top img{width:110px;height:110px}}
+.standings-table{width:100%;border-collapse:collapse;margin-top:16px}
+.standings-table th{background:#ffcc00;color:#000;padding:10px;text-align:left;font-weight:700}
+.standings-table td{padding:10px;border-bottom:1px solid #333}
+.standings-table tr:hover{background:#1f1f1f}
+.standings-table .rank{width:40px;text-align:center;font-weight:700;color:#ffcc00}
+.standings-table .team{font-weight:700}
+.standings-table .form{font-size:0.85rem}
+.form-badge{display:inline-block;width:18px;height:18px;line-height:18px;text-align:center;border-radius:3px;margin:0 1px;font-size:11px;font-weight:700}
+.form-badge.W{background:#4caf50;color:#fff}
+.form-badge.D{background:#ff9800;color:#fff}
+.form-badge.L{background:#f44336;color:#fff}
+.loading{text-align:center;color:#ffcc00;padding:20px}
+@media (max-width:640px){.modal-top{flex-direction:column}.modal-top img{width:110px;height:110px}.standings-table{font-size:0.9rem}.standings-table th,.standings-table td{padding:8px 4px}}
 </style>
 </head>
 <body>
@@ -209,6 +221,19 @@ form button{background:#ffcc00;color:#000;cursor:pointer}
   </div>
 </div>
 
+<!-- STANDINGS MODAL -->
+<div id="standingsModal" class="modal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="standingsTitle" style="max-width:900px">
+    <h3 id="standingsTitle" style="color:#ffcc00;text-align:center;margin-bottom:16px">League Standings</h3>
+    <div id="standingsContent">
+      <div class="loading">Loading standings...</div>
+    </div>
+    <div class="actions">
+      <button id="closeStandingsBtn" class="close-btn">Close</button>
+    </div>
+  </div>
+</div>
+
 <script>
 const PLACEHOLDER="data:image/svg+xml;charset=utf-8,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250"><rect width="100%" height="100%" fill="#1d1d1d"/><text x="50%" y="50%" fill="#ffcc00" font-size="20" font-family="Roboto, Arial" text-anchor="middle" dy="6">Photo not available</text></svg>');
 
@@ -263,6 +288,10 @@ const profileData={
   "Australia":"Australia's motocross scene has produced multiple top riders and strong MXoN results. The country is recognized for its competitive domestic racing and international achievements.",
   "Uganda":"Uganda has potential riders but has  never participated in the MXoN but will on day be recogonized."
   };
+const footballLeagues=['EPL','LaLiga','SerieA','Bundesliga','Ligue1','ChampionsLeague','WorldCup'];
+let standingsCache={};
+let refreshInterval;
+
 function openProfile(key){
   const data=profileData[key];
   modalImg.style.display='none';
@@ -273,10 +302,75 @@ function openProfile(key){
   viewSourceBtn.style.display='none';
   modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
 }
-document.querySelectorAll('.card').forEach(card=>card.addEventListener('click',()=>openProfile(card.dataset.key)));
-document.getElementById('closeModalBtn').addEventListener('click',()=>{modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');});
-modal.addEventListener('click',e=>{if(e.target===modal){modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');}});
-window.addEventListener('keydown',e=>{if(e.key==='Escape'){modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');}});
+
+async function fetchStandings(leagueKey){
+  try{
+    const response=await fetch(`/api/standings/${leagueKey}`);
+    if(!response.ok)throw new Error('Failed to fetch standings');
+    const data=await response.json();
+    standingsCache[leagueKey]=data;
+    return data;
+  }catch(error){
+    console.error('Error fetching standings:',error);
+    return null;
+  }
+}
+
+function renderStandings(data){
+  if(!data||!data.standings)return '<p style="color:#f44336;text-align:center">Failed to load standings</p>';
+  let html='<table class="standings-table"><thead><tr>';
+  html+='<th class="rank">#</th><th class="team">Team</th><th>P</th><th>W</th><th>D</th><th>L</th>';
+  html+='<th>GD</th><th>Pts</th><th class="form">Form</th></tr></thead><tbody>';
+  data.standings.forEach(team=>{
+    html+=`<tr><td class="rank">${team.rank}</td><td class="team">${team.team.name}</td>`;
+    html+=`<td>${team.all.played}</td><td>${team.all.win}</td><td>${team.all.draw}</td><td>${team.all.lose}</td>`;
+    html+=`<td>${team.goalsDiff>0?'+':''}${team.goalsDiff}</td><td style="font-weight:700;color:#ffcc00">${team.points}</td>`;
+    html+=`<td class="form">`;
+    if(team.form){
+      team.form.split('').slice(-5).forEach(result=>{
+        html+=`<span class="form-badge ${result}">${result}</span>`;
+      });
+    }
+    html+=`</td></tr>`;
+  });
+  html+='</tbody></table>';
+  return html;
+}
+
+async function openStandings(leagueKey){
+  const standingsModal=document.getElementById('standingsModal');
+  const standingsTitle=document.getElementById('standingsTitle');
+  const standingsContent=document.getElementById('standingsContent');
+  const leagueNames={'EPL':'Premier League','LaLiga':'La Liga','SerieA':'Serie A','Bundesliga':'Bundesliga','Ligue1':'Ligue 1','ChampionsLeague':'UEFA Champions League','WorldCup':'FIFA World Cup'};
+  standingsTitle.textContent=leagueNames[leagueKey]+' Standings';
+  standingsContent.innerHTML='<div class="loading">Loading standings...</div>';
+  standingsModal.classList.add('open');standingsModal.setAttribute('aria-hidden','false');
+  const data=await fetchStandings(leagueKey);
+  standingsContent.innerHTML=renderStandings(data);
+  if(refreshInterval)clearInterval(refreshInterval);
+  refreshInterval=setInterval(async()=>{
+    const freshData=await fetchStandings(leagueKey);
+    if(freshData)standingsContent.innerHTML=renderStandings(freshData);
+  },30*60*1000);
+}
+
+document.querySelectorAll('#footballGrid .card').forEach(card=>{
+  card.addEventListener('click',()=>openStandings(card.dataset.key));
+});
+document.querySelectorAll('.card').forEach(card=>{
+  if(!footballLeagues.includes(card.dataset.key)){
+    card.addEventListener('click',()=>openProfile(card.dataset.key));
+  }
+});
+document.getElementById('closeModalBtn').addEventListener('click',()=>{modal.classList.remove('open');modal.setAttribute('aria-hidden','true');});
+modal.addEventListener('click',e=>{if(e.target===modal){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');}});
+const standingsModal=document.getElementById('standingsModal');
+document.getElementById('closeStandingsBtn').addEventListener('click',()=>{
+  if(refreshInterval)clearInterval(refreshInterval);
+  standingsModal.classList.remove('open');standingsModal.setAttribute('aria-hidden','true');
+});
+standingsModal.addEventListener('click',e=>{if(e.target===standingsModal){if(refreshInterval)clearInterval(refreshInterval);standingsModal.classList.remove('open');standingsModal.setAttribute('aria-hidden','true');}});
+window.addEventListener('keydown',e=>{if(e.key==='Escape'){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');if(refreshInterval)clearInterval(refreshInterval);standingsModal.classList.remove('open');standingsModal.setAttribute('aria-hidden','true');}});
 
 /* Intro animation */
 const introText=document.getElementById('introText');
