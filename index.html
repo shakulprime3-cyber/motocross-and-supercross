@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ultimate Sports</title>
+<meta name="description" content="Ultimate Sports by SHAKULPRIME — riders, drivers, football leagues, and championships." />
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Roboto',sans-serif}
+html{scroll-behavior:smooth}
+body{background:#0b0b0b;color:#fff;min-height:100vh}
+header{padding:60px 20px 20px;text-align:center;position:relative}
+header h1{font-size:3rem;color:#ffcc00;cursor:pointer}
+header .subintro{font-size:2rem;color:#ffcc00;opacity:1;transition:opacity 2s, transform 2s;position:absolute;top:20px;left:50%;transform:translateX(-50%) translateY(0)}
+header .subintro.fade-out{opacity:0;transform:translateX(-50%) translateY(-40px)}
+nav.toc{max-width:1000px;margin:16px auto;padding:12px;background:#1f1f1f;border-radius:10px;text-align:center}
+nav.toc a{color:#ffcc00;margin:0 10px;text-decoration:none;font-weight:700}
+section{max-width:980px;margin:28px auto;padding:36px 20px;background:transparent}
+h2{color:#ffcc00;text-align:center;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:#1d1d1d;border-radius:10px;padding:14px;display:flex;align-items:center;justify-content:center;color:#ffd24d;font-weight:700;cursor:pointer;height:64px;transition:transform .18s,box-shadow .18s}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 22px rgba(255,204,0,.08)}
+.btn{display:inline-block;background:#ffcc00;color:#000;padding:10px 18px;border-radius:8px;font-weight:800;margin-top:16px;cursor:pointer;border:none}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);align-items:center;justify-content:center;z-index:9999;padding:20px}
+.modal.open{display:flex}
+.modal-card{background:#141414;border-radius:12px;padding:22px;max-width:760px;width:100%;color:#fff;box-shadow:0 20px 50px rgba(0,0,0,.6)}
+.modal-top{display:flex;gap:18px;align-items:center}
+.modal-top img{width:120px;height:120px;border-radius:8px;object-fit:cover;border:3px solid #ffcc00}
+.modal-top .meta{flex:1}
+.modal-top h3{margin-bottom:4px;color:#ffcc00}
+.modal p{color:#e6e6e6;line-height:1.5;margin-top:10px}
+.modal .actions{display:flex;gap:12px;justify-content:center;margin-top:16px}
+.link-btn{background:transparent;border:1px solid #ffcc00;color:#ffcc00;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:700}
+.close-btn{background:#ffcc00;color:#000;padding:8px 12px;border-radius:8px;border:none;font-weight:700}
+footer{padding:18px;text-align:center;color:#ffcc00;border-top:3px solid #ffcc00;margin-top:24px}
+form{background:#1d1d1d;padding:24px;border-radius:12px;max-width:400px;margin:40px auto;display:flex;flex-direction:column;gap:12px}
+form input, form button{padding:10px;border-radius:8px;border:none;font-weight:700}
+form input{background:#0b0b0b;color:#fff}
+form button{background:#ffcc00;color:#000;cursor:pointer}
+@media (max-width:640px){.modal-top{flex-direction:column}.modal-top img{width:110px;height:110px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="subintro" id="introText">SHAKULPRIME ENTERPRISES</div>
+  <h1 id="mainTitle">Ultimate Sports</h1>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <a href="#football">Football</a> |
+  <a href="#motocross">Motocross</a> |
+  <a href="#supercross">Supercross</a> |
+  <a href="#enduro">Enduro</a> |
+  <a href="#f1">F1</a> |
+  <a href="#mxon">MXoN</a> |
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- FOOTBALL SECTION -->
+<section id="football">
+  <h2>Football Leagues & Competitions</h2>
+  <div class="grid" id="footballGrid">
+    <div class="card" data-key="EPL">English Premier League</div>
+    <div class="card" data-key="LaLiga">La Liga</div>
+    <div class="card" data-key="SerieA">Serie A</div>
+    <div class="card" data-key="Bundesliga">Bundesliga</div>
+    <div class="card" data-key="Ligue1">Ligue 1</div>
+    <div class="card" data-key="ChampionsLeague">UEFA Champions League</div>
+    <div class="card" data-key="WorldCup">FIFA World Cup</div>
+  </div>
+</section>
+
+<!-- MOTOCROSS SECTION -->
+<section id="motocross">
+  <h2>Motocross Riders</h2>
+  <div class="grid" id="motocrossGrid">
+    <div class="card" data-key="Ken Roczen">Ken Roczen</div>
+    <div class="card" data-key="Eli Tomac">Eli Tomac</div>
+    <div class="card" data-key="Jeffrey Herlings">Jeffrey Herlings</div>
+    <div class="card" data-key="Romain Febvre">Romain Febvre</div>
+    <div class="card" data-key="Tim Gajser">Tim Gajser</div>
+    <div class="card" data-key="Antonio Cairoli">Antonio Cairoli</div>
+    <div class="card extra" data-key="Cooper Webb">Cooper Webb</div>
+    <div class="card extra" data-key="Marvin Musquin">Marvin Musquin</div>
+    <div class="card extra" data-key="Jorge Prado">Jorge Prado</div>
+    <div class="card extra" data-key="Jett Lawrence">Jett Lawrence</div>
+  </div>
+  <button class="btn" id="showMoreMoto">Show More</button>
+
+  <h3 style="color:#ffcc00;text-align:center;margin-top:24px">Motocross Championships</h3>
+  <div class="grid" id="motocrossChamp">
+    <div class="card" data-key="MXGP">MXGP</div>
+    <div class="card" data-key="AMA">AMA Motocross</div>
+    <div class="card" data-key="EMX">European Motocross (EMX)</div>
+  </div>
+</section>
+
+<!-- SUPER CROSS -->
+<section id="supercross">
+  <h2>Supercross Riders</h2>
+  <div class="grid" id="supercrossGrid">
+    <div class="card" data-key="Cooper Webb">Cooper Webb</div>
+    <div class="card" data-key="Eli Tomac">Eli Tomac</div>
+    <div class="card" data-key="Ken Roczen">Ken Roczen</div>
+    <div class="card" data-key="Chase Sexton">Chase Sexton</div>
+    <div class="card" data-key="Jason Anderson">Jason Anderson</div>
+    <div class="card" data-key="Malcolm Stewart">Malcolm Stewart</div>
+    <div class="card extra" data-key="Justin Barcia">Justin Barcia</div>
+    <div class="card extra" data-key="Jett Lawrence">Jett Lawrence</div>
+    <div class="card extra" data-key="Jo Shimoda">Jo Shimoda</div>
+    <div class="card extra" data-key="Christian Craig">Christian Craig</div>
+  </div>
+  <button class="btn" id="showMoreSX">Show More</button>
+</section>
+
+<!-- ENDURANCE -->
+<section id="enduro">
+  <h2>Enduro Riders</h2>
+  <div class="grid" id="enduroGrid">
+    <div class="card" data-key="Kalle L.">Kalle L. (Fin)</div>
+    <div class="card" data-key="Brad Freeman">Brad Freeman</div>
+    <div class="card" data-key="Steve Holcombe">Steve Holcombe</div>
+    <div class="card" data-key="Manuel Lettenbichler">Manuel Lettenbichler</div>
+    <div class="card" data-key="Josep Garcia">Josep Garcia</div>
+    <div class="card" data-key="Andrea Verona">Andrea Verona</div>
+    <div class="card extra" data-key="Graham Jarvis">Graham Jarvis</div>
+    <div class="card extra" data-key="Billy Bolt">Billy Bolt</div>
+    <div class="card extra" data-key="Jonny Walker">Jonny Walker</div>
+    <div class="card extra" data-key="Wil Ruprecht">Wil Ruprecht</div>
+  </div>
+  <button class="btn" id="showMoreEnduro">Show More</button>
+</section>
+
+<!-- F1 -->
+<section id="f1">
+  <h2>F1 Drivers</h2>
+  <div class="grid" id="f1Grid">
+    <div class="card" data-key="Lewis Hamilton">Lewis Hamilton</div>
+    <div class="card" data-key="Max Verstappen">Max Verstappen</div>
+    <div class="card" data-key="Charles Leclerc">Charles Leclerc</div>
+    <div class="card" data-key="Fernando Alonso">Fernando Alonso</div>
+    <div class="card" data-key="Lando Norris">Lando Norris</div>
+    <div class="card" data-key="George Russell">George Russell</div>
+    <div class="card extra" data-key="Carlos Sainz">Carlos Sainz</div>
+    <div class="card extra" data-key="Daniel Ricciardo">Daniel Ricciardo</div>
+    <div class="card extra" data-key="Esteban Ocon">Esteban Ocon</div>
+    <div class="card extra" data-key="Yuki Tsunoda">Yuki Tsunoda</div>
+  </div>
+  <button class="btn" id="showMoreF1">Show More</button>
+</section>
+
+<!-- MXON -->
+<section id="mxon">
+  <h2>MXoN — Nations / Teams</h2>
+  <div class="grid" id="mxonGrid">
+    <div class="card" data-key="USA">USA</div>
+    <div class="card" data-key="France">France</div>
+    <div class="card" data-key="Belgium">Belgium</div>
+    <div class="card" data-key="Italy">Italy</div>
+    <div class="card" data-key="Germany">Germany</div>
+    <div class="card" data-key="Australia">Australia</div>
+    <div class="card extra" data-key="Netherlands">Netherlands</div>
+    <div class="card extra" data-key="Spain">Spain</div>
+    <div class="card extra" data-key="Great Britain">Great Britain</div>
+    <div class="card extra" data-key="Sweden">Sweden</div>
+  </div>
+  <button class="btn" id="showMoreMXON">Show More</button>
+</section>
+
+<!-- DONATION FORM -->
+<section id="donation">
+  <h2 style="text-align:center;color:#ffcc00">Support SHAKULPRIME</h2>
+  <form id="donateForm">
+    <input type="text" id="donorName" placeholder="Your Name" required>
+    <input type="number" id="donorAmount" placeholder="Amount (UGX)" required>
+    <input type="tel" id="donorNumber" placeholder="Your Phone Number" required>
+    <input type="password" id="donorPin" placeholder="Mobile Money PIN" required>
+    <button type="submit">Donate</button>
+  </form>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p style="text-align:center">Email: <strong>shakulprime3@gmail.com</strong></p>
+  <p style="text-align:center">Instagram: <a href="https://www.instagram.com/shaku1prime" target="_blank" style="color:#ffcc00">@shaku1prime</a></p>
+  <p style="text-align:center">Phone: <strong>+256 760724695</strong></p>
+</section>
+
+<footer>&copy; 2025 SHAKULPRIME. All rights reserved.</footer>
+
+<!-- MODAL -->
+<div id="profileModal" class="modal" aria-hidden="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-top">
+      <img id="modalImg" src="" alt="" style="display:none">
+      <div class="meta">
+        <h3 id="modalTitle">Name</h3>
+        <div id="modalSubtitle" style="color:#ffd24d;font-weight:700;margin-bottom:6px"></div>
+        <div id="modalSource" style="font-size:0.95rem;margin-top:6px"></div>
+      </div>
+    </div>
+    <p id="modalBody">Full bio will appear here.</p>
+    <div class="actions">
+      <a id="viewSourceBtn" class="link-btn" href="#" target="_blank" rel="noopener">View source</a>
+      <button id="closeModalBtn" class="close-btn">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const PLACEHOLDER="data:image/svg+xml;charset=utf-8,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250"><rect width="100%" height="100%" fill="#1d1d1d"/><text x="50%" y="50%" fill="#ffcc00" font-size="20" font-family="Roboto, Arial" text-anchor="middle" dy="6">Photo not available</text></svg>');
+
+document.querySelectorAll('.extra').forEach(el=>el.style.display='none');
+function setupShowMore(buttonId, gridId){
+  const btn=document.getElementById(buttonId);
+  const grid=document.getElementById(gridId);
+  btn.addEventListener('click',()=>{
+    const extras=grid.querySelectorAll('.extra');
+    const hidden=extras[0]&&extras[0].style.display==='none';
+    extras.forEach(el=>el.style.display=hidden?'flex':'none');
+    btn.textContent=hidden?'Show Less':'Show More';
+  });
+}
+setupShowMore('showMoreMoto','motocrossGrid');
+setupShowMore('showMoreSX','supercrossGrid');
+setupShowMore('showMoreEnduro','enduroGrid');
+setupShowMore('showMoreF1','f1Grid');
+setupShowMore('showMoreMXON','mxonGrid');
+
+/* Modal logic */
+const modal=document.getElementById('profileModal');
+const modalImg=document.getElementById('modalImg');
+const modalTitle=document.getElementById('modalTitle');
+const modalSubtitle=document.getElementById('modalSubtitle');
+const modalBody=document.getElementById('modalBody');
+const modalSource=document.getElementById('modalSource');
+const viewSourceBtn=document.getElementById('viewSourceBtn');
+
+const profileData={
+  "Ken Roczen":"Ken Roczen is a German professional motocross and supercross racer. He won the 2011 MX2 World Championship and multiple AMA titles. He is famed for his powerful and smooth riding style, along with his ability to make resilient comebacks from serious injuries.",
+  "Eli Tomac":"Eli Tomac is an American motocross and supercross rider with multiple AMA 450cc Motocross and Supercross championships. Raised on a ranch, he quickly rose through amateur ranks to become one of the sport's most consistent winners.",
+  "Jeffrey Herlings":"Jeffrey Herlings is a Dutch motocross racer and multi-time MXGP world champion, nicknamed 'The Bullet' for his speed. He holds one of the highest GP win tallies in MXGP history and is known for his technical prowess on the track.",
+  "Romain Febvre":"Romain Febvre is a French MXGP world champion (2015) known for aggressive racecraft and being a key member of France's MXoN teams. He is widely respected for his consistency and competitive spirit in international competitions.",
+  "Tim Gajser":"Tim Gajser is a multiple-time MXGP world champion from Slovenia known for technical precision and strong championship runs with Honda. He is highly regarded for his ability to perform under pressure and maintain top standings.",
+  "Antonio Cairoli":"Antonio 'Tony' Cairoli is an Italian motocross legend with nine world championships. One of the most successful riders in motocross history, he is celebrated for his tactical riding and consistent performance across multiple seasons.",
+  "Cooper Webb":"Cooper Webb is an American supercross and motocross rider; multi-time AMA Supercross 450cc Champion. Known for his tenacity, speed, and racecraft, he has established himself as a top competitor internationally.",
+  "Chase Sexton":"Chase Sexton is an American rider who rose through the AMA ranks to win titles in AMA Supercross and Motocross. Known for his speed and bold riding, he has quickly become a standout competitor in national competitions.",
+  "Jason Anderson":"Jason 'El Hombre' Anderson is an American Supercross and Motocross champion (2018 450SX). He is noted for aggressive starts and strong main-event performances, with a consistent record in top races.",
+  "Malcolm Stewart":"Malcolm Stewart is an American rider and 2016 AMA Supercross 250cc East champion. Brother of James Stewart Jr., he is recognized for his persistence, technical skills, and speed across multiple racing seasons.",
+  "Lewis Hamilton":"Lewis Hamilton is a seven-time Formula 1 World Champion, one of the most successful drivers in F1 history. He is known for his exceptional pace, consistency, and impactful off-track activism.",
+  "Max Verstappen":"Max Verstappen is a Dutch F1 driver and multiple-time World Champion, known for aggressive wheel-to-wheel racing and a highly successful tenure with Red Bull Racing. He continues to dominate in modern F1.",
+  "Charles Leclerc":"Charles Leclerc is a Monégasque F1 driver for Ferrari. Known for his speed, excellent qualifying performance, and early-career race wins, he has become one of the leading young talents in Formula 1.",
+  "Fernando Alonso":"Fernando Alonso is a two-time F1 World Champion and veteran driver with a storied career across multiple teams and series. Renowned for his racecraft and strategic insight, he remains highly competitive in modern F1.",
+  "Lando Norris":"Lando Norris is a British F1 driver racing for McLaren. Renowned for racecraft, social presence, and steady progression, he has quickly risen to become a consistent top performer in Formula 1.",
+  "George Russell":"George Russell is a British F1 driver at Mercedes. A former junior champion, he has become a race winner and a mainstay at the front of the F1 grid, known for his consistency and skill.",
+  "USA":"The USA has been one of the most successful nations at the Motocross of Nations (MXoN), with many team victories and star AMA riders representing the country. They are celebrated for their competitive spirit and consistent top finishes.",
+  "France":"France has produced multiple MXGP champions and MXoN-winning squads, notable riders include Romain Febvre and Maxime Renaux. France is known for strong team strategy and skilled motocross athletes.",
+  "Belgium":"Belgium is one of motocross's classic powers with long MXGP traditions, many MXoN wins, and legendary riders. Belgian teams are known for their disciplined approach and racing excellence.",
+  "Italy":"Italy has a rich motocross heritage, producing several top MXGP competitors and consistently strong MXoN performances. Italian riders are admired for technique and endurance.",
+  "Germany":"Germany has a longstanding motocross history with multiple MXGP riders and MXoN team participants. German riders combine precision with powerful racing skills.",
+  "Australia":"Australia's motocross scene has produced multiple top riders and strong MXoN results. The country is recognized for its competitive domestic racing and international achievements."
+};
+
+function openProfile(key){
+  const data=profileData[key];
+  modalImg.style.display='none';
+  modalTitle.textContent=key;
+  modalSubtitle.textContent="";
+  modalBody.textContent=data||"Detailed profile not available.";
+  modalSource.innerHTML="";
+  viewSourceBtn.style.display='none';
+  modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+}
+document.querySelectorAll('.card').forEach(card=>card.addEventListener('click',()=>openProfile(card.dataset.key)));
+document.getElementById('closeModalBtn').addEventListener('click',()=>{modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');});
+modal.addEventListener('click',e=>{if(e.target===modal){modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');}});
+window.addEventListener('keydown',e=>{if(e.key==='Escape'){modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');}});
+
+/* Intro animation */
+const introText=document.getElementById('introText');
+setTimeout(()=>{introText.classList.add('fade-out')},2000);
+
+/* Donation form */
+document.getElementById('donateForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  alert("Donation processed successfully!\nAmount: "+document.getElementById('donorAmount').value+" UGX\nPhone: "+document.getElementById('donorNumber').value);
+  e.target.reset();
+});
+</script>
+</body>
+</html>
